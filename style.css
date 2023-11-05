@@ -1,0 +1,121 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap');
+
+body {
+    background-color: #ffffff;
+    font-family: 'Poppins', sans-serif;
+    padding: 1.2rem;
+    box-shadow: 0px 0px 70px 0px rgba(255, 107, 122, 0.174);
+}
+
+#calcHeadingContainer {
+    background: #FF3649;
+    color: white;
+    margin-bottom: 1.3rem;
+    text-align: center;
+    border: none;
+}
+
+#calcHeading {
+    line-height: 1.5rem;
+    font-size: 1.3rem;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+.input-group {
+    display: flex;
+    justify-content: space-between;
+    margin: 0.6rem 0.4rem;
+}
+
+.input-group-text {
+    background-color: transparent;
+    border: none;
+    color: white;
+    font-size: 1.2rem;
+    border-bottom: 1px dashed #c7c7c74d;
+    padding-bottom: 0.4rem;
+    font-weight: 500;
+    border-radius: 0;
+    padding-left: 0;
+}
+
+.input-group-text:hover {
+    cursor: help;
+}
+
+.form-control,
+.form-control:focus {
+    background-color: transparent;
+    outline: none;
+    box-shadow: none;
+    border: none;
+    font-size: 1.2rem;
+    color: #ff5465;
+    font-weight: 500;
+    text-align: right;
+    /* border-bottom: 1px dashed #c7c7c74d; */
+    border-radius: 0;
+}
+
+
+.form-control::placeholder {
+    color: rgb(135, 135, 135);
+    font-size: 1.2rem;
+}
+
+
+.wrapper .card {
+    text-align: center;
+    background-color: #202020;
+    color: white;
+    margin-bottom: 0.5rem;
+    border: none;
+}
+
+.themedText {
+    color: #ff5465;
+    font-size: 1.4rem;
+    font-weight: 500;
+}
+
+.custom-tooltip {
+    --bs-tooltip-bg: black;
+    --bs-tooltip-color: white;
+}
+
+.custom-date-input::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+    margin-left: 4px;
+}
+
+.cutsom-button{
+    background-color: #FF3649;
+    color: white;
+    border: none;
+    padding: 0.4rem 0.6rem;
+    border-radius: 3px;
+}
+
+
+/* Responsive elements */
+
+@media (max-width: 577px) {
+    #calcHeading {
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 422px) {
+    .input-group-text {
+        font-size: 1.1rem !important;
+    }
+
+    .form-control {
+        font-size: 1.2rem;
+    }
+}
