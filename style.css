@@ -102,6 +102,69 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 
+#resultSnapshot{
+    width: 1080px;
+    height: 1080px;
+    background-image: url(Roblox\ level\ result\ bg.jpg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+}
+
+#resultSnapshot h3{
+    font-size: 40px;
+    font-weight: 700;
+    margin: 5rem 0;
+}
+
+#resultSnapshot .col{
+    font-size: 36px;
+    font-weight: 500;
+}
+
+#resultSnapshot .valCol{
+    text-align: right;
+}
+
+#resultSnapshot .row{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#lValueResult{
+    font-size: 4rem;
+    font-weight: 800;
+    text-align: center;
+}
+
+
+.footerCol{
+    text-align: center;
+}
+
+.footerCol label{
+    font-size: 26px;
+    color: #474646;
+}
+
+
+.footerCol img{
+    height: 30px;
+    width: auto;
+    margin: 2rem 0;
+}
+
+#todayDate{
+    margin: 1.5vh 0 6px 0;
+    font-size: 24px;
+}
+
+
 /* Responsive elements */
 
 @media (max-width: 577px) {
