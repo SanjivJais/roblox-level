@@ -26,13 +26,13 @@ input[type="number"]::-webkit-outer-spin-button {
     appearance: none;
 }
 
-.input-group {
+#main_input_section .input-group {
     display: flex;
     justify-content: space-between;
     margin: 0.6rem 0.4rem;
 }
 
-.input-group-text {
+#main_input_section .input-group-text {
     background-color: transparent;
     border: none;
     color: white;
@@ -44,12 +44,12 @@ input[type="number"]::-webkit-outer-spin-button {
     padding-left: 0;
 }
 
-.input-group-text:hover {
+#main_input_section .input-group-text:hover {
     cursor: help;
 }
 
-.form-control,
-.form-control:focus {
+#main_input_section .form-control,
+#main_input_section .form-control:focus {
     background-color: transparent;
     outline: none;
     box-shadow: none;
@@ -58,12 +58,11 @@ input[type="number"]::-webkit-outer-spin-button {
     color: #ff5465;
     font-weight: 500;
     text-align: right;
-    /* border-bottom: 1px dashed #c7c7c74d; */
     border-radius: 0;
 }
 
 
-.form-control::placeholder {
+#main_input_section .form-control::placeholder {
     color: rgb(135, 135, 135);
     font-size: 1.2rem;
 }
@@ -93,7 +92,7 @@ input[type="number"]::-webkit-outer-spin-button {
     margin-left: 4px;
 }
 
-.cutsom-button{
+.custom-button{
     background-color: #FF3649;
     color: white;
     border: none;
@@ -105,7 +104,7 @@ input[type="number"]::-webkit-outer-spin-button {
 #resultSnapshot{
     width: 1080px;
     height: 1080px;
-    background-image: url(Roblox\ level\ result\ bg.jpg);
+    background-image: url(https://gamingskool.com/wp-content/uploads/2023/11/Roblox-level-result-bg.jpg);
     background-repeat: no-repeat;
     background-size: contain;
     display: flex;
@@ -162,6 +161,43 @@ input[type="number"]::-webkit-outer-spin-button {
 #todayDate{
     margin: 1.5vh 0 6px 0;
     font-size: 24px;
+}
+
+
+#snapshotRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+#snapshotRow button{
+    background-color: #6247AA;
+    width: 100%;
+}
+
+#snapshotRow span{
+    background-color: #6247AA;
+    border: 1px solid #6247AA;
+    color: white;
+    border-radius: 3px 0 0 3px;
+}
+
+#snapshotRow input{
+    color: white;
+    background-color: transparent;
+    border: 1px solid #6247AA;
+    border-radius: 0 3px 3px 0;
+}
+
+#snapshotRow input:focus{
+    outline: none;
+    box-shadow: none;
+}
+
+#snapshotRow input::placeholder{
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.489);
 }
 
 

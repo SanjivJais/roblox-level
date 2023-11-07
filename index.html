@@ -7,6 +7,7 @@
     <title>Roblox Level Calculator</title>
     <link rel="stylesheet" href="bootstrap.min.css">
     <link rel="stylesheet" href="style.css">
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
     <meta name="robots" content="noindex">
 </head>
 
@@ -20,72 +21,75 @@
             </div>
 
             <div class="wrapper">
-                <div class="card resultCard">
+                <div class="card">
                     <div class="card-body">
-                        <div class="row">
-                            <div class="col">
-                                <div class="input-group mb-3">
-                                    <span class="input-group-text" data-bs-toggle="tooltip" data-bs-placement="right"
-                                        data-bs-custom-class="custom-tooltip"
-                                        data-bs-title="Your account's Join Date.">Join
-                                        Date</span>
-                                    <input type="date" class="form-control custom-date-input" value="" id="joinDate"
-                                        max="">
+                        <div id="main_input_section">
+                            <div class="row">
+                                <div class="col">
+                                    <div class="input-group mb-3">
+                                        <span class="input-group-text" data-bs-toggle="tooltip"
+                                            data-bs-placement="right" data-bs-custom-class="custom-tooltip"
+                                            data-bs-title="Your account's Join Date.">Join
+                                            Date</span>
+                                        <input type="date" class="form-control custom-date-input" value="" id="joinDate"
+                                            max="">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col">
+                                    <div class="input-group mb-3">
+                                        <span class="input-group-text" data-bs-toggle="tooltip"
+                                            data-bs-placement="right" data-bs-custom-class="custom-tooltip"
+                                            data-bs-title="Total number of badges you have.">No. of Badges
+                                        </span>
+                                        <input type="number" class="form-control" placeholder="eg. 10" value="0"
+                                            id="badges" step="1" min="0" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="input-group mb-3">
+                                        <span class="input-group-text" data-bs-toggle="tooltip"
+                                            data-bs-placement="right" data-bs-custom-class="custom-tooltip"
+                                            data-bs-title="Number of places visits you have received.">Place Visits
+                                        </span>
+                                        <input type="number" class="form-control" placeholder="eg. 100" value="0"
+                                            id="placeVisits" step="1" min="0" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="input-group mb-3">
+                                        <span class="input-group-text" data-bs-toggle="tooltip"
+                                            data-bs-placement="right" data-bs-custom-class="custom-tooltip"
+                                            data-bs-title="Number of followers you have.">Followers
+                                        </span>
+                                        <input type="number" class="form-control" placeholder="eg. 50" value="0"
+                                            id="followers" step="1" min="0" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="input-group mb-3">
+                                        <span class="input-group-text" data-bs-toggle="tooltip"
+                                            data-bs-placement="right" data-bs-custom-class="custom-tooltip"
+                                            data-bs-title="Number of friends you have.">Friends
+                                        </span>
+                                        <input type="number" class="form-control" placeholder="eg. 150" value="0"
+                                            id="friends" step="1" min="0" required>
+                                    </div>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="row">
-                            <div class="col">
-                                <div class="input-group mb-3">
-                                    <span class="input-group-text" data-bs-toggle="tooltip" data-bs-placement="right"
-                                        data-bs-custom-class="custom-tooltip"
-                                        data-bs-title="Total number of badges you have.">No. of Badges
-                                    </span>
-                                    <input type="number" class="form-control" placeholder="eg. 10" value="0" id="badges"
-                                        step="1" min="0" required>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col">
-                                <div class="input-group mb-3">
-                                    <span class="input-group-text" data-bs-toggle="tooltip" data-bs-placement="right"
-                                        data-bs-custom-class="custom-tooltip"
-                                        data-bs-title="Number of places visits you have received.">Place Visits
-                                    </span>
-                                    <input type="number" class="form-control" placeholder="eg. 100" value="0"
-                                        id="placeVisits" step="1" min="0" required>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col">
-                                <div class="input-group mb-3">
-                                    <span class="input-group-text" data-bs-toggle="tooltip" data-bs-placement="right"
-                                        data-bs-custom-class="custom-tooltip"
-                                        data-bs-title="Number of followers you have.">Followers
-                                    </span>
-                                    <input type="number" class="form-control" placeholder="eg. 50" value="0"
-                                        id="followers" step="1" min="0" required>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col">
-                                <div class="input-group mb-3">
-                                    <span class="input-group-text" data-bs-toggle="tooltip" data-bs-placement="right"
-                                        data-bs-custom-class="custom-tooltip"
-                                        data-bs-title="Number of friends you have.">Friends
-                                    </span>
-                                    <input type="number" class="form-control" placeholder="eg. 150" value="0"
-                                        id="friends" step="1" min="0" required>
-                                </div>
-                            </div>
-                        </div>
                         <div class="row mt-3">
                             <div class="col">
-                                <button type="submit" class="cutsom-button" style="float: right;"
+                                <button type="submit" class="custom-button" style="float: right;"
                                     id="calcBtn">Calculate</button>
                             </div>
                         </div>
@@ -93,13 +97,26 @@
                                 class="themedText" id="levelValue">0</span>
                         </p>
                         <hr style="color: rgba(240, 248, 255, 0.501);">
-                        <button class="cutsom-button mt-2 mb-2" style="background-color: rgb(96, 0, 152);">Download
-                            Snapshot</button>
+                        <div class="row mb-2 mt-4" id="snapshotRow">
+                            <div class="col">
+                                <div class="input-group">
+                                    <span class="input-group-text" >@</span>
+                                    <input type="text" class="form-control" placeholder="Roblox username" data-bs-toggle="tooltip"
+                                    data-bs-placement="top" data-bs-custom-class="custom-tooltip"
+                                    data-bs-title="It will be used to personalize your snapshot." id="robUsername">
+                                </div>
+                            </div>
+                            <div class="col">
+                                <button class="custom-button" id="downloadSnapshot" title="Save a snapshot" data-bs-toggle="tooltip"
+                                data-bs-placement="top" data-bs-custom-class="custom-tooltip"
+                                data-bs-title="Save a snapshot to share with your friends!">Download Snapshot</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
             <div class="card" id="resultSnapshot" style="display: none;">
-                <h3><span>@GsNobi's</span> <span style="color: #474646;"> Roblox Level</span></h3>
+                <h3><span id="snapRobUsername">Your</span><span style="color: #474646;"> Roblox Level</span></h3>
                 <div class="card-body">
                     <div class="row">
                         <div class="col" id="labelInputCol">
@@ -124,8 +141,9 @@
                                 <div class="col valCol">198</div>
                             </div>
                             <div class="row">
-                                <div class="col" style="text-align: center; margin-top: 3rem;"><span
-                                        id="lValueResult">4.578</span></div>
+                                <div class="col" style="text-align: center; margin-top: 3rem;">
+                                    <span id="lValueResult">4.578</span>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -142,6 +160,7 @@
 
             </div>
         </div>
+    </div>
 </body>
 <script src="bootstrap.bundle.min.js"></script>
 <script src="script.js"></script>

@@ -43,7 +43,7 @@ const calcDays = () => {
 }
 
 const dbScore = (d, b) => {
-    return (1 - (1 / (((d ** 0.2) / 365) + ((b ** 0.7) / (10*(d**0.4))) + 1)));
+    return (1 - (1 / (((d ** 0.2) / 365) + ((b ** 0.7) / (10 * (d ** 0.4))) + 1)));
 }
 const placeScore = (p) => {
     return (1 - (1 / (((p ** 0.5) / 150) + 1)));
@@ -55,9 +55,10 @@ const friendsScore = (fr) => {
     return (1 - (1 / (((fr ** 0.7) / 10) + 1)));
 }
 
+var level = 0;
+
 calcBtn.addEventListener('click', function () {
     const d = calcDays();
-    let level = 0;
     if (d === 0) {
         level = 0;
     }
@@ -65,8 +66,101 @@ calcBtn.addEventListener('click', function () {
         level = 0.25 * (150 * dbScore(d, b.value) + 100 * placeScore(p.value) + 90 * followersScore(fo.value, b.value) + 60 * friendsScore(fr.value));
     }
     levelValue.innerHTML = level.toFixed(3);
-    console.log(d);
+    setSnapValues();
 })
 
+function formatDate(date) {
+    const months = [
+        "Jan", "Feb", "Mar", "Apr", "May", "Jun",
+        "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
+    ];
 
+    const month = months[date.getMonth()];
+    const day = date.getDate();
+    const year = date.getFullYear();
+
+    return `${month} ${day}, ${year}`;
+}
+
+const valueCols = document.getElementsByClassName('valCol');
+function setSnapValues() {
+    valueCols[0].innerHTML = joinDate.value;
+    valueCols[1].innerHTML = addComma(b.value);
+    valueCols[2].innerHTML = addComma(p.value);
+    valueCols[3].innerHTML = addComma(fo.value);
+    valueCols[4].innerHTML = addComma(fr.value);
+
+    document.getElementById('lValueResult').innerHTML = level.toFixed(3);
+    const currentDate = new Date();
+    document.getElementById('todayDate').innerHTML = formatDate(currentDate);
+}
+
+function setUsername() {
+    const robUsername = document.getElementById('robUsername');
+    const snapRobUsername = document.getElementById('snapRobUsername');
+    if (robUsername.value != "")
+        snapRobUsername.innerHTML = `@${robUsername.value}'s`;
+    else
+        snapRobUsername.innerHTML = "Your";
+
+}
+
+//Result snapshot download functionalities
+
+const resultSnapshot = document.getElementById('resultSnapshot');
+const downloadSnapshot = document.getElementById('downloadSnapshot');
+
+downloadSnapshot.addEventListener('click', function () {
+    setUsername();
+    resultSnapshot.style.display = "";
+    const options = {
+        scale: 1, // Adjust the scale factor as needed
+    };
+    // Use html2canvas to capture the content of the resultSnapshot element as an image
+    html2canvas(resultSnapshot, options).then(canvas => {
+        // Convert the canvas to a data URL in JPEG format
+        const image = canvas.toDataURL('image/jpeg');
+
+        // Create an anchor element to trigger the download
+        const a = document.createElement('a');
+        a.href = image;
+        a.download = 'snapshot.jpg';
+        a.click();
+
+        resultSnapshot.style.display = "none";
+
+    });
+});
+
+//-------------------
+
+//formatting the result in comma separated form
+function addComma(numVal) {
+
+    // remove numSign
+    var numSign = 1;
+    if (numVal < 0) {
+        numSign = -1;
+        numVal = -numVal;
+    }
+    // trim the decimal point
+    let num = numVal.toString().includes('.') ?
+        numVal.toString().split('.')[0] : numVal.toString();
+    let len = num.toString().length;
+    let numResult = '';
+    let numCount = 1;
+    for (let i = len - 1; i >= 0; i--) {
+        numResult = num.toString()[i] + numResult;
+        if (numCount % 3 === 0 && numCount !== 0 && i !== 0) {
+            numResult = ',' + numResult;
+        }
+        numCount++;
+    }
+    // include number after decimal point
+    if (numVal.toString().includes('.')) {
+        numResult = numResult + '.' +
+            numVal.toString().split('.')[1];
+    }
+    return numResult;
+}
 
