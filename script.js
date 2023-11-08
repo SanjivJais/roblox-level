@@ -12,6 +12,8 @@ const ir = document.getElementById('incomingRobux');
 const or = document.getElementById('outgoingRobux');
 const calcBtn = document.getElementById('calcBtn');
 const levelValue = document.getElementById('levelValue');
+const fieldAlert = document.getElementById('fieldAlert');
+
 
 // Function to specify max date
 function updateMaxDate() {
@@ -58,16 +60,17 @@ const friendsScore = (fr) => {
 var level = 0;
 
 calcBtn.addEventListener('click', function () {
-    const d = calcDays();
-    if (d === 0) {
-        level = 0;
-    }
-    else {
+    if (showAlert() == 0) {
+        const d = calcDays();
         level = 0.25 * (150 * dbScore(d, b.value) + 100 * placeScore(p.value) + 90 * followersScore(fo.value, b.value) + 60 * friendsScore(fr.value));
+    } else {
+        level = 0;
     }
     levelValue.innerHTML = level.toFixed(3);
     setSnapValues();
 })
+
+
 
 function formatDate(date) {
     const months = [
@@ -84,7 +87,7 @@ function formatDate(date) {
 
 const valueCols = document.getElementsByClassName('valCol');
 function setSnapValues() {
-    valueCols[0].innerHTML = joinDate.value;
+    valueCols[0].innerHTML = formatDate(new Date(joinDate.value));
     valueCols[1].innerHTML = addComma(b.value);
     valueCols[2].innerHTML = addComma(p.value);
     valueCols[3].innerHTML = addComma(fo.value);
@@ -92,7 +95,7 @@ function setSnapValues() {
 
     document.getElementById('lValueResult').innerHTML = level.toFixed(3);
     const currentDate = new Date();
-    document.getElementById('todayDate').innerHTML = formatDate(currentDate);
+    document.getElementById('todayDate').innerHTML = `${formatDate(currentDate)}`;
 }
 
 function setUsername() {
@@ -109,30 +112,79 @@ function setUsername() {
 
 const resultSnapshot = document.getElementById('resultSnapshot');
 const downloadSnapshot = document.getElementById('downloadSnapshot');
+var snapFlag = 0;
 
 downloadSnapshot.addEventListener('click', function () {
-    setUsername();
-    resultSnapshot.style.display = "";
-    const options = {
-        scale: 1, // Adjust the scale factor as needed
-    };
-    // Use html2canvas to capture the content of the resultSnapshot element as an image
-    html2canvas(resultSnapshot, options).then(canvas => {
-        // Convert the canvas to a data URL in JPEG format
-        const image = canvas.toDataURL('image/jpeg');
+    if (snapFlag) {
+        fieldAlert.style.display = "none";
+        setUsername();
+        resultSnapshot.style.display = "";
+        const options = {
+            scale: 1, // Adjust the scale factor as needed
+        };
+        // Use html2canvas to capture the content of the resultSnapshot element as an image
+        html2canvas(resultSnapshot, options).then(canvas => {
+            // Convert the canvas to a data URL in JPEG format
+            const image = canvas.toDataURL('image/jpeg');
 
-        // Create an anchor element to trigger the download
-        const a = document.createElement('a');
-        a.href = image;
-        a.download = 'snapshot.jpg';
-        a.click();
+            // Create an anchor element to trigger the download
+            const a = document.createElement('a');
+            a.href = image;
+            a.download = 'snapshot.jpg';
+            a.click();
 
-        resultSnapshot.style.display = "none";
+            resultSnapshot.style.display = "none";
 
-    });
+        });
+    } else {
+        fieldAlert.style.display = "";
+        fieldAlert.innerHTML = "Please first calculate your level!";
+    }
+
 });
 
 //-------------------
+
+// function to show alerts 
+function showAlert() {
+    fieldAlert.style.display = "none";
+    let message = null;
+    if (joinDate.value !== "") {
+        if (b.value > 0) {
+            if (p.value >= 0) {
+                if (fo.value >= 0) {
+                    if (fr.value >= 0) {
+                        snapFlag = 1;
+                        return 0;
+                    } else {
+                        message = "Invalid Friends Number!";
+                        show(message);
+                    }
+                } else {
+                    message = "Invalid Followers Number!";
+                    show(message);
+                }
+            } else {
+                message = "Invalid Place Visits!";
+                show(message);
+            }
+        }
+        else {
+            message = "You must have at least one badge to calculate level!";
+            show(message);
+        }
+    } else {
+        message = "Select a valid Join Date!";
+        show(message);
+    }
+    function show(message) {
+        if (message !== null) {
+            fieldAlert.style.display = "";
+            fieldAlert.innerHTML = message;
+        }
+    }
+}
+
 
 //formatting the result in comma separated form
 function addComma(numVal) {

@@ -92,7 +92,7 @@ input[type="number"]::-webkit-outer-spin-button {
     margin-left: 4px;
 }
 
-.custom-button{
+.custom-button {
     background-color: #FF3649;
     color: white;
     border: none;
@@ -101,7 +101,7 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 
-#resultSnapshot{
+#resultSnapshot {
     width: 1080px;
     height: 1080px;
     background-image: url(https://gamingskool.com/wp-content/uploads/2023/11/Roblox-level-result-bg.jpg);
@@ -114,51 +114,51 @@ input[type="number"]::-webkit-outer-spin-button {
     border-radius: 10px;
 }
 
-#resultSnapshot h3{
+#resultSnapshot h3 {
     font-size: 40px;
     font-weight: 700;
     margin: 5rem 0;
 }
 
-#resultSnapshot .col{
+#resultSnapshot .col {
     font-size: 36px;
     font-weight: 500;
 }
 
-#resultSnapshot .valCol{
+#resultSnapshot .valCol {
     text-align: right;
 }
 
-#resultSnapshot .row{
+#resultSnapshot .row {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-#lValueResult{
+#lValueResult {
     font-size: 4rem;
     font-weight: 800;
     text-align: center;
 }
 
 
-.footerCol{
+.footerCol {
     text-align: center;
 }
 
-.footerCol label{
+.footerCol label {
     font-size: 26px;
     color: #474646;
 }
 
 
-.footerCol img{
+.footerCol img {
     height: 30px;
     width: auto;
     margin: 2rem 0;
 }
 
-#todayDate{
+#todayDate {
     margin: 1.5vh 0 6px 0;
     font-size: 24px;
 }
@@ -171,33 +171,39 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 
-#snapshotRow button{
+#snapshotRow button {
     background-color: #6247AA;
     width: 100%;
 }
 
-#snapshotRow span{
+#snapshotRow span {
     background-color: #6247AA;
     border: 1px solid #6247AA;
     color: white;
     border-radius: 3px 0 0 3px;
 }
 
-#snapshotRow input{
+#snapshotRow input {
     color: white;
     background-color: transparent;
     border: 1px solid #6247AA;
     border-radius: 0 3px 3px 0;
 }
 
-#snapshotRow input:focus{
+#snapshotRow input:focus {
     outline: none;
     box-shadow: none;
 }
 
-#snapshotRow input::placeholder{
+#snapshotRow input::placeholder {
     font-size: 0.8rem;
     color: rgba(255, 255, 255, 0.489);
+}
+
+
+.alert {
+    background-color: rgb(255, 175, 175);
+    margin-top: 1.5rem;
 }
 
 

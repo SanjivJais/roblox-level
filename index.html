@@ -94,23 +94,29 @@
                             </div>
                         </div>
                         <p style="margin-top: 1rem; font-size: 1.2rem; font-weight: 500;">Your Roblox Level: <span
-                                class="themedText" id="levelValue">0</span>
+                                class="themedText" id="levelValue">0.000</span>
                         </p>
                         <hr style="color: rgba(240, 248, 255, 0.501);">
                         <div class="row mb-2 mt-4" id="snapshotRow">
                             <div class="col">
                                 <div class="input-group">
-                                    <span class="input-group-text" >@</span>
-                                    <input type="text" class="form-control" placeholder="Roblox username" data-bs-toggle="tooltip"
-                                    data-bs-placement="top" data-bs-custom-class="custom-tooltip"
-                                    data-bs-title="It will be used to personalize your snapshot." id="robUsername">
+                                    <span class="input-group-text">@</span>
+                                    <input type="text" class="form-control" placeholder="Roblox username"
+                                        data-bs-toggle="tooltip" data-bs-placement="top"
+                                        data-bs-custom-class="custom-tooltip"
+                                        data-bs-title="It will be used to personalize your snapshot." id="robUsername">
                                 </div>
                             </div>
                             <div class="col">
-                                <button class="custom-button" id="downloadSnapshot" title="Save a snapshot" data-bs-toggle="tooltip"
-                                data-bs-placement="top" data-bs-custom-class="custom-tooltip"
-                                data-bs-title="Save a snapshot to share with your friends!">Download Snapshot</button>
+                                <button class="custom-button" id="downloadSnapshot" title="Save a snapshot"
+                                    data-bs-toggle="tooltip" data-bs-placement="top"
+                                    data-bs-custom-class="custom-tooltip"
+                                    data-bs-title="Save a snapshot to share with your friends!">Download
+                                    Snapshot</button>
                             </div>
+                        </div>
+                        <div class="alert alert-danger" role="alert" id="fieldAlert" style="display: none;">
+                            Alert!
                         </div>
                     </div>
                 </div>
@@ -122,27 +128,27 @@
                         <div class="col" id="labelInputCol">
                             <div class="row mb-4">
                                 <div class="col">Join Date:</div>
-                                <div class="col valCol">10/28/2023</div>
+                                <div class="col valCol">....</div>
                             </div>
                             <div class="row mb-4">
                                 <div class="col">Badges:</div>
-                                <div class="col valCol">10,000</div>
+                                <div class="col valCol">....</div>
                             </div>
                             <div class="row mb-4">
                                 <div class="col">Place Visits:</div>
-                                <div class="col valCol">770,412</div>
+                                <div class="col valCol">....</div>
                             </div>
                             <div class="row mb-4">
                                 <div class="col">Followers:</div>
-                                <div class="col valCol">8,900,000</div>
+                                <div class="col valCol">....</div>
                             </div>
                             <div class="row mb-4">
                                 <div class="col">Friends:</div>
-                                <div class="col valCol">198</div>
+                                <div class="col valCol">....</div>
                             </div>
                             <div class="row">
                                 <div class="col" style="text-align: center; margin-top: 3rem;">
-                                    <span id="lValueResult">4.578</span>
+                                    <span id="lValueResult">0.000</span>
                                 </div>
                             </div>
                         </div>
@@ -153,12 +159,13 @@
                             <label for="url">https://gamingskool.com/roblox-level-calculator/</label><br>
                             <img src="https://gamingskool.com/wp-content/uploads/2022/10/SG-long-logo1.png" alt=""
                                 srcset=""><br>
-                            <label id="todayDate">Nov 6, 2023</label>
+                            <label><span style="font-weight: 600;">Calculated on: </span><span id="todayDate">[Snapshot Date]</span></label>
                         </div>
                     </div>
                 </div>
 
             </div>
+            
         </div>
     </div>
 </body>
