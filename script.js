@@ -45,16 +45,16 @@ const calcDays = () => {
 }
 
 const dbScore = (d, b) => {
-    return (1 - (1 / (((d ** 0.2) / 365) + ((b ** 0.7) / (10 * (d ** 0.4))) + 1)));
+    return (1 - (1 / (((d ** 0.2) / 365) + ((b ** 0.7) / (10 * (d ** 0.3))) + 1)));
 }
 const placeScore = (p) => {
     return (1 - (1 / (((p ** 0.5) / 150) + 1)));
 }
-const followersScore = (fo, b) => {
-    return (1 - (1 / (((fo ** 1) / (50 * (b ** 0.6))) + 1)));
+const followersScore = (fo, p) => {
+    return (1 - (1 / (((fo) / (50 * (p ** 0.4 + 0.01))) + 1)));
 }
-const friendsScore = (fr) => {
-    return (1 - (1 / (((fr ** 0.7) / 10) + 1)));
+const friendsScore = (fr, b) => {
+    return (1 - (1 / (((fr ** 0.7) / (2 * (b ** 0.1))) + 1)));
 }
 
 var level = 0;
@@ -62,7 +62,7 @@ var level = 0;
 calcBtn.addEventListener('click', function () {
     if (showAlert() == 0) {
         const d = calcDays();
-        level = 0.25 * (150 * dbScore(d, b.value) + 100 * placeScore(p.value) + 90 * followersScore(fo.value, b.value) + 60 * friendsScore(fr.value));
+        level = 0.25 * (150 * dbScore(d, b.value) + 100 * placeScore(p.value) + 90 * followersScore(fo.value, p.value) + 60 * friendsScore(fr.value, b.value));
     } else {
         level = 0;
     }
@@ -98,8 +98,8 @@ function setSnapValues() {
     document.getElementById('todayDate').innerHTML = `${formatDate(currentDate)}`;
 }
 
+const robUsername = document.getElementById('robUsername');
 function setUsername() {
-    const robUsername = document.getElementById('robUsername');
     const snapRobUsername = document.getElementById('snapRobUsername');
     if (robUsername.value != "")
         snapRobUsername.innerHTML = `@${robUsername.value}'s`;
@@ -130,7 +130,7 @@ downloadSnapshot.addEventListener('click', function () {
             // Create an anchor element to trigger the download
             const a = document.createElement('a');
             a.href = image;
-            a.download = 'snapshot.jpg';
+            a.download = `${robUsername.value} Roblox Level (GamingSkool.com).jpg`;
             a.click();
 
             resultSnapshot.style.display = "none";
@@ -150,29 +150,35 @@ function showAlert() {
     fieldAlert.style.display = "none";
     let message = null;
     if (joinDate.value !== "") {
-        if (b.value > 0) {
-            if (p.value >= 0) {
-                if (fo.value >= 0) {
-                    if (fr.value >= 0) {
-                        snapFlag = 1;
-                        return 0;
+        if (calcDays() >= 1) {
+            if (b.value > 0) {
+                if (p.value >= 0) {
+                    if (fo.value >= 0) {
+                        if (fr.value >= 0) {
+                            snapFlag = 1;
+                            return 0;
+                        } else {
+                            message = "Invalid Friends Number!";
+                            show(message);
+                        }
                     } else {
-                        message = "Invalid Friends Number!";
+                        message = "Invalid Followers Number!";
                         show(message);
                     }
                 } else {
-                    message = "Invalid Followers Number!";
+                    message = "Invalid Place Visits!";
                     show(message);
                 }
-            } else {
-                message = "Invalid Place Visits!";
+            }
+            else {
+                message = "You must have at least one badge to calculate level!";
                 show(message);
             }
-        }
-        else {
-            message = "You must have at least one badge to calculate level!";
+        } else {
+            message = "You Roblox account must be at least one day old!";
             show(message);
         }
+
     } else {
         message = "Select a valid Join Date!";
         show(message);
