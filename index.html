@@ -23,6 +23,9 @@
             <div class="wrapper">
                 <div class="card">
                     <div class="card-body">
+                        <div class="alert alert-danger mt-0" role="alert" id="fieldAlert" style="display: none;">
+                            Alert!
+                        </div>
                         <div id="main_input_section">
                             <div class="row">
                                 <div class="col">
@@ -98,7 +101,7 @@
                         </p>
                         <hr style="color: rgba(240, 248, 255, 0.501);">
                         <div class="row mb-2 mt-4" id="snapshotRow">
-                            <div class="col">
+                            <div class="col-xs-12 col-sm-6 userCol">
                                 <div class="input-group">
                                     <span class="input-group-text">@</span>
                                     <input type="text" class="form-control" placeholder="Roblox username"
@@ -107,7 +110,7 @@
                                         data-bs-title="It will be used to personalize your snapshot." id="robUsername">
                                 </div>
                             </div>
-                            <div class="col">
+                            <div class="col-xs-12 col-sm-6">
                                 <button class="custom-button" id="downloadSnapshot" title="Save a snapshot"
                                     data-bs-toggle="tooltip" data-bs-placement="top"
                                     data-bs-custom-class="custom-tooltip"
@@ -115,9 +118,7 @@
                                     Snapshot</button>
                             </div>
                         </div>
-                        <div class="alert alert-danger" role="alert" id="fieldAlert" style="display: none;">
-                            Alert!
-                        </div>
+                        
                     </div>
                 </div>
             </div>
